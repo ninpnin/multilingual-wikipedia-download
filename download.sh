@@ -19,7 +19,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Dict2vec.  If not, see <http://www.gnu.org/licenses/>.
 
-LANGCODE=sv
+LANGCODE=fi
 DATA_DIR=./data
 
 echo "Downloading $LANGCODE Wikipedia dump..."
