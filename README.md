@@ -7,6 +7,9 @@ Based on Matt Mahoney's Wikipedia filtering script.
 # Todo
 
 * [ ] Add languages
+  * [x] Finnish
+  * [x] Swedish
+  * [ ] English
   * [ ] German
   * [ ] Italian
 * [ ] Implement markdown output
