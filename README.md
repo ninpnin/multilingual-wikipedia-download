@@ -1,6 +1,6 @@
 # Multilingual Wikipedia download
 
-Download Wikipedia dumps in multiple languages and convert them into a nice plaintext format. Currently supports Finnish and Swedish. The plan is to add at least German and Italian down the line.
+Download Wikipedia dumps in multiple languages and convert them into a nice plaintext format. Currently supports English, Finnish and Swedish. The plan is to add at least German and Italian down the line.
 
 Based on Matt Mahoney's Wikipedia filtering script.
 
@@ -9,7 +9,7 @@ Based on Matt Mahoney's Wikipedia filtering script.
 * [ ] Add languages
   * [x] Finnish
   * [x] Swedish
-  * [ ] English
+  * [x] English
   * [ ] German
   * [ ] Italian
 * [ ] Implement markdown output
