@@ -13,3 +13,4 @@ Based on Matt Mahoney's Wikipedia filtering script.
   * [x] German
   * [ ] Italian
 * [ ] Implement markdown output
+* [ ] Add support for Wiktionary downloads
