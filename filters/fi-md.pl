@@ -42,6 +42,10 @@ while (<>) {
     $_=" $_ ";
     tr/A-Z/a-z/;
     s/Ä/ä/g;
+    s/\n====/\n####/g;
+    s/\n===/\n###/g;
+    s/\n==/\n##/g;
+    s/\n=/\n#/g;
     s/Ö/ö/g;
     s/0/ nolla /g;
     s/1/ yksi /g;
@@ -53,7 +57,7 @@ while (<>) {
     s/7/ seitsemän /g;
     s/8/ kahdeksan /g;
     s/9/ yhdeksän /g;
-    tr/a-zäö\n/ /cs;
+    tr/a-zäö\n#/ /cs;
     chop;
     print $_;
   }
