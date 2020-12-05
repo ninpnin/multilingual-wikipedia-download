@@ -40,13 +40,18 @@ while (<>) {
     
     # convert to lowercase letters and spaces, spell digits
     $_=" $_ ";
-    tr/A-Z/a-z/;
-    s/Ä/ä/g;
-    s/\n====/\n####/g;
-    s/\n===/\n###/g;
-    s/\n==/\n##/g;
-    s/\n=/\n#/g;
-    s/Ö/ö/g;
+    #tr/A-Z/a-z/;
+    #s/Ä/ä/g;
+    #s/Ö/ö/g;
+    
+    # Detect headers and bullets
+    s/\n====/\nHEADERFOUR/g;
+    s/\n===/\nHEADERTHREE/g;
+    s/\n==/\nHEADERTWO/g;
+    s/\n=/\nHEADERONE/g;
+    s/\n\*/\nBULLET/g;
+    
+    # Numbers
     s/0/ nolla /g;
     s/1/ yksi /g;
     s/2/ kaksi /g;
@@ -57,7 +62,28 @@ while (<>) {
     s/7/ seitsemän /g;
     s/8/ kahdeksan /g;
     s/9/ yhdeksän /g;
-    tr/a-zäö\n#/ /cs;
+    
+    # Detect bold and italics
+    s/(''')(.*?(?=''))(''')/BOLD$2BOLD/g;
+    s/('')(.*?(?=''))('')/ITALIC$2ITALIC/g;
+    
+    # Remove special characters and extra spaces
+    tr/a-zäöA-ZÄÖ\n\*\.!\?'/ /cs;
+    s/\n /\n/g;
+    s/ \n/\n/g;
+    s/ \././g;
+    
+    # Bold and italics to markdown
+    s/BOLD/\_\_/g;
+    s/ITALIC/\_/g;
+    
+    # Headers and bullets to markdown
+    s/HEADERFOUR/####/g;
+    s/HEADERTHREE/###/g;
+    s/HEADERTWO/##/g;
+    s/HEADERONE/#/g;
+    s/BULLET/\* /g;
+    
     chop;
     print $_;
   }
