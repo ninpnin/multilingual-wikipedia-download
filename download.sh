@@ -19,13 +19,35 @@
 # You should have received a copy of the GNU General Public License
 # along with Dict2vec.  If not, see <http://www.gnu.org/licenses/>.
 
-LANGCODE=sv
+
+LANGCODE=fi
 DATA_DIR=./data
+MARKDOWN=''
+
+print_usage() {
+  printf "Usage: ..."
+}
+
+while getopts 'ml:v' flag; do
+  case "${flag}" in
+    m) MARKDOWN='-md' ;;
+    l) LANGCODE="${OPTARG}" ;;
+    *) print_usage
+       exit 1 ;;
+  esac
+done
+
+
+DATA_DIR=./data
+
+echo "Language code: '$LANGCODE'"
+echo "Markdown: '$MARKDOWN'"
+
 
 echo "Downloading $LANGCODE Wikipedia dump..."
 #URL=https://dumps.wikimedia.org/enwiki/20191101/enwiki-20191101-pages-articles-multistream.xml.bz2
 URL=https://dumps.wikimedia.org/${LANGCODE}wiki/20201120/${LANGCODE}wiki-20201120-pages-articles-multistream.xml.bz2
-time wget --show-progress -qO- $URL | bzip2 -d | perl "filters/${LANGCODE}.pl" > "$DATA_DIR/${LANGCODE}wiki-full.txt"
+time wget --show-progress -qO- $URL | bzip2 -d | perl "filters/${LANGCODE}${MARKDOWN}.pl" > "$DATA_DIR/${LANGCODE}wiki-full.txt"
 echo "Done."
 echo
 
