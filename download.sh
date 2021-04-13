@@ -21,7 +21,7 @@
 
 
 LANGCODE=fi
-DATA_DIR=./data
+DATA_DIR=../../Data/wiki/${LANGCODE}
 MARKDOWN=''
 
 print_usage() {
@@ -38,15 +38,13 @@ while getopts 'ml:v' flag; do
 done
 
 
-DATA_DIR=./data
-
 echo "Language code: '$LANGCODE'"
 echo "Markdown: '$MARKDOWN'"
 
 
 echo "Downloading $LANGCODE Wikipedia dump..."
 #URL=https://dumps.wikimedia.org/enwiki/20191101/enwiki-20191101-pages-articles-multistream.xml.bz2
-URL=https://dumps.wikimedia.org/${LANGCODE}wiki/20201120/${LANGCODE}wiki-20201120-pages-articles-multistream.xml.bz2
+URL=https://dumps.wikimedia.org/${LANGCODE}wiki/latest/${LANGCODE}wiki-latest-pages-articles-multistream.xml.bz2
 time wget --show-progress -qO- $URL | bzip2 -d | perl "filters/${LANGCODE}${MARKDOWN}.pl" > "$DATA_DIR/${LANGCODE}wiki-full.txt"
 echo "Done."
 echo
