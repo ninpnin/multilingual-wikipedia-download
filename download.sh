@@ -20,9 +20,11 @@
 # along with Dict2vec.  If not, see <http://www.gnu.org/licenses/>.
 
 
-LANGCODE=fi
-DATA_DIR=../../Data/wiki/${LANGCODE}
+LANGCODE=sv
+DATA_DIR=$HOME/Data/wiki/${LANGCODE}
 MARKDOWN=''
+
+mkdir $DATA_DIR
 
 print_usage() {
   printf "Usage: ..."
