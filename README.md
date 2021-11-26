@@ -11,6 +11,6 @@ Based on Matt Mahoney's Wikipedia filtering script.
   * [x] Swedish
   * [x] English
   * [x] German
-  * [ ] Italian
+  * [x] Italian
 * [ ] Implement markdown output
 * [ ] Add support for Wiktionary downloads
