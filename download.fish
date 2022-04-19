@@ -1,4 +1,4 @@
-#!/bin/env fish
+#!/usr/bin/env fish
 
 # Parse arguments
 set --local options 'h/help' 'l/language=' 'm/markdown' 'd/data_dir='
@@ -23,7 +23,7 @@ else
 end
 
 # Set format, markdown vs txt
-if set --query _flag_language
+if set --query _flag_markdown
   set MARKDOWN md
 else
   echo Language not provided
@@ -44,7 +44,7 @@ echo "Downloading $LANGCODE Wikipedia dump..."
 set URL https://dumps.wikimedia.org/"$LANGCODE"wiki/latest/"$LANGCODE"wiki-latest-pages-articles-multistream.xml.bz2
 echo $URL
 
-exit
+#exit
 time wget --show-progress -qO- $URL | bzip2 -d | perl filters/$LANGCODE$MARKDOWN.pl > $DATA_DIR/"$LANGCODE"wiki-full.txt
 echo "Done."
 echo
